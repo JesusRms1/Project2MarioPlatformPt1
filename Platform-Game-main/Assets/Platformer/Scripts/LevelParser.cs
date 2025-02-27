@@ -12,12 +12,15 @@ public class LevelParser : MonoBehaviour
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
-    
+    public GameObject WaterPrefab;
+    public GameObject FlagPolePrefab;
+     public GameObject MarioPrefab;
 
     // --------------------------------------------------------------------------
     void Start()
     {
         LoadLevel();
+         MarioPrefab = GameObject.Find("Mario");
     }
 
     // --------------------------------------------------------------------------
@@ -30,15 +33,16 @@ public class LevelParser : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - 1, Camera.main.transform.position.y, Camera.main.transform.position.z);
-        }
+        // if (Input.GetKey(KeyCode.LeftArrow))
+        // {
+        //     Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - 1, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        // }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 1, Camera.main.transform.position.y, Camera.main.transform.position.z);
-        }
+        // if (Input.GetKey(KeyCode.RightArrow))
+        // {
+        //     Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 1, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        // }
+        Camera.main.transform.position = new Vector3(MarioPrefab.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
     }
     // --------------------------------------------------------------------------
     private void LoadLevel()
@@ -93,6 +97,7 @@ public class LevelParser : MonoBehaviour
                     Vector3 newPos = new Vector3(col, row, 0f);
                     Instantiate(rockPrefab, newPos, Quaternion.identity, environmentRoot);
                 }
+                
             }
 
             row++;
